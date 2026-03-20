@@ -62,12 +62,20 @@ Este proyecto utiliza MediaPipe Pose Landmarker para detectar la pose del cuerpo
    - Se abrirá una ventana con la webcam y el esqueleto dibujado en verde.
    - Las métricas aparecen en la esquina superior izquierda.
    - El feedback en la esquina inferior derecha.
+   - Presiona **1** para modo **sentadilla**.
+   - Presiona **2** para modo **zancada**.
+   - Presiona **3** para modo **curl de biceps sentado**.
+   - Presiona **4** para modo **press de hombros sentado**.
    - Presiona **ESC** para salir.
 
 3. **Pruebas:**
    - Inclina el tronco lateralmente.
    - Flexiona los codos.
    - Sube un hombro.
+   - En sentadilla: baja y sube, verifica profundidad y simetria de rodillas.
+   - En zancada: adelanta una pierna, verifica flexion delantera y separacion de pies.
+   - En curl sentado: mantente sentado, flexiona y extiende codos de forma controlada.
+   - En press sentado: eleva brazos sobre hombros y vuelve a la posicion inicial.
    - Observa cómo cambian las métricas y el feedback.
 
 ## Solución de Problemas
@@ -83,6 +91,9 @@ Este proyecto utiliza MediaPipe Pose Landmarker para detectar la pose del cuerpo
 - **Problemas con la webcam:**
   - Verifica permisos en Configuración > Privacidad > Cámara.
   - Actualiza drivers de la webcam.
+   - Si toma otra camara (virtual), fuerza el indice con variable de entorno:
+      - PowerShell: `$env:CAMERA_INDEX=1` y luego `python pose_feedback_webcam.py`
+      - CMD: `set CAMERA_INDEX=1` y luego `python pose_feedback_webcam.py`
 
 ## Archivos Incluidos
 
@@ -95,5 +106,7 @@ Este proyecto utiliza MediaPipe Pose Landmarker para detectar la pose del cuerpo
 ## Notas
 
 - El proyecto se enfoca en métricas del tren superior.
+- Tambien incluye reglas basicas de tren inferior para sentadilla y zancada.
+- Incluye ejercicios de tren superior para test sentado: curl de biceps y press de hombros.
 - Los umbrales se pueden ajustar en el código para personalizar el feedback.
 - Para desarrollo, usa el modelo lite; para producción, el full.
